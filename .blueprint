@@ -1,0 +1,98 @@
+created:
+    - app/Http/Controllers/UserController.php
+    - app/Http/Controllers/CompagnyController.php
+    - app/Http/Controllers/CategoryController.php
+    - app/Http/Controllers/QuizzController.php
+    - app/Http/Controllers/LessonController.php
+    - app/Http/Controllers/KeywordController.php
+    - app/Http/Controllers/ReplyController.php
+    - app/Http/Controllers/QuestionController.php
+    - app/Http/Controllers/AnecdocteController.php
+    - database/factories/CompagnyFactory.php
+    - database/factories/AnecdocteFactory.php
+    - database/factories/UserFactory.php
+    - database/factories/CategoryFactory.php
+    - database/factories/QuizzFactory.php
+    - database/factories/LessonFactory.php
+    - database/factories/KeywordFactory.php
+    - database/factories/ReplyFactory.php
+    - database/factories/AboutFactory.php
+    - database/factories/QuestionFactory.php
+    - database/migrations/2025_03_16_032322_create_compagnies_table.php
+    - database/migrations/2025_03_16_032323_create_anecdoctes_table.php
+    - database/migrations/2025_03_16_032324_create_users_table.php
+    - database/migrations/2025_03_16_032325_create_categories_table.php
+    - database/migrations/2025_03_16_032326_create_quizzs_table.php
+    - database/migrations/2025_03_16_032327_create_lessons_table.php
+    - database/migrations/2025_03_16_032328_create_keywords_table.php
+    - database/migrations/2025_03_16_032329_create_replies_table.php
+    - database/migrations/2025_03_16_032330_create_abouts_table.php
+    - database/migrations/2025_03_16_032331_create_questions_table.php
+    - app/Models/Compagny.php
+    - app/Models/Anecdocte.php
+    - app/Models/User.php
+    - app/Models/Category.php
+    - app/Models/Quizz.php
+    - app/Models/Lesson.php
+    - app/Models/Keyword.php
+    - app/Models/Reply.php
+    - app/Models/About.php
+    - app/Models/Question.php
+    - tests/Feature/Http/Controllers/UserControllerTest.php
+    - tests/Feature/Http/Controllers/CompagnyControllerTest.php
+    - tests/Feature/Http/Controllers/CategoryControllerTest.php
+    - tests/Feature/Http/Controllers/QuizzControllerTest.php
+    - tests/Feature/Http/Controllers/LessonControllerTest.php
+    - tests/Feature/Http/Controllers/KeywordControllerTest.php
+    - tests/Feature/Http/Controllers/ReplyControllerTest.php
+    - tests/Feature/Http/Controllers/QuestionControllerTest.php
+    - tests/Feature/Http/Controllers/AnecdocteControllerTest.php
+    - app/Http/Requests/UserStoreRequest.php
+    - app/Http/Requests/UserUpdateRequest.php
+    - app/Http/Requests/CompagnyStoreRequest.php
+    - app/Http/Requests/CompagnyUpdateRequest.php
+    - app/Http/Requests/CategoryStoreRequest.php
+    - app/Http/Requests/CategoryUpdateRequest.php
+    - app/Http/Requests/QuizzStoreRequest.php
+    - app/Http/Requests/QuizzUpdateRequest.php
+    - app/Http/Requests/LessonStoreRequest.php
+    - app/Http/Requests/LessonUpdateRequest.php
+    - app/Http/Requests/KeywordStoreRequest.php
+    - app/Http/Requests/KeywordUpdateRequest.php
+    - app/Http/Requests/ReplyStoreRequest.php
+    - app/Http/Requests/ReplyUpdateRequest.php
+    - app/Http/Requests/QuestionStoreRequest.php
+    - app/Http/Requests/QuestionUpdateRequest.php
+    - app/Http/Requests/AnecdocteStoreRequest.php
+    - app/Http/Requests/AnecdocteUpdateRequest.php
+    - app/Http/Resources/UserCollection.php
+    - app/Http/Resources/UserResource.php
+    - app/Http/Resources/CompagnyCollection.php
+    - app/Http/Resources/CompagnyResource.php
+    - app/Http/Resources/CategoryCollection.php
+    - app/Http/Resources/CategoryResource.php
+    - app/Http/Resources/QuizzCollection.php
+    - app/Http/Resources/QuizzResource.php
+    - app/Http/Resources/LessonCollection.php
+    - app/Http/Resources/LessonResource.php
+    - app/Http/Resources/KeywordCollection.php
+    - app/Http/Resources/KeywordResource.php
+    - app/Http/Resources/ReplyCollection.php
+    - app/Http/Resources/ReplyResource.php
+    - app/Http/Resources/QuestionCollection.php
+    - app/Http/Resources/QuestionResource.php
+    - app/Http/Resources/AnecdocteCollection.php
+    - app/Http/Resources/AnecdocteResource.php
+updated:
+    - routes/api.php
+models:
+    Compagny: { id: 'integer primary', name: 'string:50', logo: 'string:512', siret: 'string:18', mail_manager: 'string:50', telephone_manager: 'string:16', adresse_siege: 'string:124' }
+    Anecdocte: { id: 'integer primary', title: 'string:64', content: 'string:2048' }
+    User: { id: 'integer primary', username: 'string:64', email: 'string:255', password: 'string:255', role: integer, id_compagnie: 'integer foreign:compagnies.id' }
+    Category: { id: 'integer primary', name: 'string:64' }
+    Quizz: { id: 'integer primary', title: text }
+    Lesson: { id: 'integer primary', name: 'string:64', content: text, id_categorie: 'integer nullable foreign:categories.id' }
+    Keyword: { id: 'integer primary', keyword: 'string:128', id_lesson: 'integer foreign:lessons.id' }
+    Reply: { id: false, id_user: 'integer primary foreign:users.id', id_question: 'integer primary foreign:questions.id', score: integer }
+    About: { id: false, id_lesson: 'integer primary foreign:lessons.id', id_quizz: 'integer primary foreign:quizz.id' }
+    Question: { id: id, question: string, anwsers: json, id_quizz: 'bigInteger foreign:quizz.id' }

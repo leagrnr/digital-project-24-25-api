@@ -1,0 +1,106 @@
+models:
+    Compagny:
+        id: integer primary
+        name: string:50
+        logo: string:512
+        siret: string:18
+        mail_manager: string:50
+        telephone_manager: string:16
+        adresse_siege: string:124
+    Anecdocte:
+        id: integer primary
+        title: string:64
+        content: string:2048
+    User:
+        id: integer primary
+        username: string:64
+        email: string:255
+        password: string:255
+        role: integer
+        id_compagnie: integer foreign:compagnies.id
+    Category:
+        id: integer primary
+        name: string:64
+    Quizz:
+        id: integer primary
+        title: text
+    Lesson:
+        id: integer primary
+        name: string:64
+        content: text
+        id_categorie: integer nullable foreign:categories.id
+    Keyword:
+        id: integer primary
+        keyword: string:128
+        id_lesson: integer foreign:lessons.id
+    Reply:
+        id: false
+        id_user: integer primary foreign:users.id
+        id_question: integer primary foreign:questions.id
+        score: integer
+    About:
+        id: false
+        id_lesson: integer primary foreign:lessons.id
+        id_quizz: integer primary foreign:quizz.id
+    Question:
+        id: id
+        question: string
+        anwsers: json
+        id_quizz: bigInteger foreign:quizz.id
+
+controllers:
+    User:
+        resource: api
+    Compagny:
+        resource: api
+    Category:
+        resource: api
+    Quizz:
+        resource: api
+    Lesson:
+        resource: api
+    Keyword:
+        resource: api
+    Reply:
+        resource: api
+    Question:
+        resource: api
+    Anecdocte:
+        resource: api
+
+factories:
+    User:
+        username: name
+        email: unique:email
+        password: bcrypt:password
+        role: random:1,2,3
+        id_compagnie: foreign:compagnies
+    Compagny:
+        name: company
+        logo: imageUrl
+        siret: regex:[0-9]{14}
+        mail_manager: unique:email
+        telephone_manager: phoneNumber
+        adresse_siege: address
+    Category:
+        name: word
+    Quizz:
+        title: sentence
+    Lesson:
+        name: sentence
+        content: paragraph
+        id_categorie: foreign:categories nullable
+    Keyword:
+        keyword: word
+        id_lesson: foreign:lessons
+    Reply:
+        id_user: foreign:users
+        id_question: foreign:questions
+        score: numberBetween:1,10
+    Question:
+        question: sentence
+        anwsers: json
+        id_quizz: foreign:quizz
+    Anecdocte:
+        title: sentence
+        content: paragraph
