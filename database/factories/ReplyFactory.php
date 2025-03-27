@@ -4,17 +4,18 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use App\Models\Compagny;
+use App\Models\Question;
+use App\Models\Reply;
 use App\Models\User;
 
-class UserFactory extends Factory
+class ReplyFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = Reply::class;
 
     /**
      * Define the model's default state.
@@ -22,11 +23,9 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'username' => fake()->userName(),
-            'email' => fake()->safeEmail(),
-            'password' => fake()->password(),
-            'role' => fake()->numberBetween(-10000, 10000),
-            'id_compagnie' => Compagny::factory(),
+            'id_user' => User::factory(),
+            'id_question' => Question::factory(),
+            'score' => fake()->numberBetween(-10000, 10000),
         ];
     }
 }

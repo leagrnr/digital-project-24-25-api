@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class User extends Model
+class Question extends Model
 {
     use HasFactory;
 
@@ -16,24 +16,24 @@ class User extends Model
      * @var array
      */
     protected $fillable = [
-        'username',
-        'email',
-        'password',
-        'role',
-        'id_compagnie',
+        'question',
+        'anwsers',
+        'id_quizz',
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * The attributes that should be cast to native types.
      *
      * @var array
      */
-    protected $hidden = [
-        'password',
+    protected $casts = [
+        'id' => 'integer',
+        'anwsers' => 'array',
+        'id_quizz' => 'integer',
     ];
 
-    public function idCompagnie(): BelongsTo
+    public function idQuizz(): BelongsTo
     {
-        return $this->belongsTo(Compagny::class);
+        return $this->belongsTo(Quizz::class);
     }
 }
