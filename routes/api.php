@@ -17,7 +17,7 @@ Route::apiResource('compagnies', App\Http\Controllers\CompagnyController::class)
 
 Route::apiResource('categories', App\Http\Controllers\CategoryController::class);
 
-Route::apiResource('quizzs', App\Http\Controllers\QuizzController::class);
+Route::apiResource('quizz', App\Http\Controllers\QuizzController::class);
 
 Route::apiResource('lessons', App\Http\Controllers\LessonController::class);
 

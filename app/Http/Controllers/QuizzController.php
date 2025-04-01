@@ -14,9 +14,9 @@ class QuizzController extends Controller
 {
     public function index(Request $request): QuizzCollection
     {
-        $quizzs = Quizz::all();
+        $quizz = Quizz::all();
 
-        return new QuizzCollection($quizzs);
+        return new QuizzCollection($quizz);
     }
 
     public function store(QuizzStoreRequest $request): QuizzResource

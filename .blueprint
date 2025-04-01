@@ -22,7 +22,7 @@ created:
     - database/migrations/2025_03_16_032323_create_anecdoctes_table.php
     - database/migrations/2025_03_16_032324_create_users_table.php
     - database/migrations/2025_03_16_032325_create_categories_table.php
-    - database/migrations/2025_03_16_032326_create_quizzs_table.php
+    - database/migrations/2025_03_16_032326_create_quizz_table.php
     - database/migrations/2025_03_16_032327_create_lessons_table.php
     - database/migrations/2025_03_16_032328_create_keywords_table.php
     - database/migrations/2025_03_16_032329_create_replies_table.php

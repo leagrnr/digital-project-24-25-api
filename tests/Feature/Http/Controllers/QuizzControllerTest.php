@@ -19,9 +19,9 @@ final class QuizzControllerTest extends TestCase
     #[Test]
     public function index_behaves_as_expected(): void
     {
-        $quizzs = Quizz::factory()->count(3)->create();
+        $quizz = Quizz::factory()->count(3)->create();
 
-        $response = $this->get(route('quizzs.index'));
+        $response = $this->get(route('quizz.index'));
 
         $response->assertOk();
         $response->assertJsonStructure([]);
@@ -43,15 +43,15 @@ final class QuizzControllerTest extends TestCase
     {
         $title = fake()->sentence(4);
 
-        $response = $this->post(route('quizzs.store'), [
+        $response = $this->post(route('quizz.store'), [
             'title' => $title,
         ]);
 
-        $quizzs = Quizz::query()
+        $quizz = Quizz::query()
             ->where('title', $title)
             ->get();
-        $this->assertCount(1, $quizzs);
-        $quizz = $quizzs->first();
+        $this->assertCount(1, $quizz);
+        $quizz = $quizz->first();
 
         $response->assertCreated();
         $response->assertJsonStructure([]);
@@ -63,7 +63,7 @@ final class QuizzControllerTest extends TestCase
     {
         $quizz = Quizz::factory()->create();
 
-        $response = $this->get(route('quizzs.show', $quizz));
+        $response = $this->get(route('quizz.show', $quizz));
 
         $response->assertOk();
         $response->assertJsonStructure([]);
@@ -86,7 +86,7 @@ final class QuizzControllerTest extends TestCase
         $quizz = Quizz::factory()->create();
         $title = fake()->sentence(4);
 
-        $response = $this->put(route('quizzs.update', $quizz), [
+        $response = $this->put(route('quizz.update', $quizz), [
             'title' => $title,
         ]);
 
@@ -104,7 +104,7 @@ final class QuizzControllerTest extends TestCase
     {
         $quizz = Quizz::factory()->create();
 
-        $response = $this->delete(route('quizzs.destroy', $quizz));
+        $response = $this->delete(route('quizz.destroy', $quizz));
 
         $response->assertNoContent();
 

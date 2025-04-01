@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::disableForeignKeyConstraints();
 
-        Schema::create('quizzs', function (Blueprint $table) {
+        Schema::create('quizz', function (Blueprint $table) {
             $table->integer('id')->primary();
             $table->text('title');
             $table->timestamps();
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('quizzs');
+        Schema::dropIfExists('quizz');
     }
 };
