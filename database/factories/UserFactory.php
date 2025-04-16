@@ -25,7 +25,7 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->safeEmail(),
             'password' => fake()->password(),
-            'role' => fake()->numberBetween(-10000, 10000),
+            'role' => fake()->randomElement(['admin', 'user']),
             'id_compagnie' => Compagny::factory(),
         ];
     }
