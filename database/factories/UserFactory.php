@@ -22,7 +22,7 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'username' => fake()->userName(),
+            'name' => fake()->name(),
             'email' => fake()->safeEmail(),
             'password' => fake()->password(),
             'role' => fake()->numberBetween(-10000, 10000),

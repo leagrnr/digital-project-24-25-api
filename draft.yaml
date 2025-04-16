@@ -13,7 +13,7 @@ models:
         content: string:2048
     User:
         id: integer primary
-        username: string:64
+        name: string:64
         email: string:255
         password: string:255
         role: integer
@@ -70,7 +70,7 @@ controllers:
 
 factories:
     User:
-        username: name
+        name: name
         email: unique:email
         password: bcrypt:password
         role: random:1,2,3
