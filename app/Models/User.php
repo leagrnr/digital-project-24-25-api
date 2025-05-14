@@ -34,9 +34,14 @@ class User extends Authenticatable
         'password',
     ];
 
-    public function idCompagnie(): BelongsTo
+    public function compagnie(): BelongsTo
     {
         return $this->belongsTo(Compagny::class);
+    }
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class, 'id_user');
     }
 
     public function lessonReadings()

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\ApiAuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -8,9 +9,7 @@ Route::get('/status', function () {
     return response()->json(['status' => 'API is working']);
 });
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::get('/user', [UserController::class, 'loggedUser'])->middleware('auth:sanctum');
 
 Route::post('/login', [ApiAuthController::class, 'login']);
 
