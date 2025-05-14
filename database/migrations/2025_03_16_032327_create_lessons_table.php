@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('lessons', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->id();
             $table->string('name', 64);
             $table->text('content');
-            $table->integer('id_categorie')->nullable();
+            $table->unsignedBigInteger('id_categorie')->nullable();
             $table->foreign('id_categorie')->references('id')->on('categories');
             $table->timestamps();
         });

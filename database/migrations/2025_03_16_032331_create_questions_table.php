@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('question');
             $table->text('anwsers');
             $table->integer('good_answer');
-            $table->bigInteger('id_quizz');
+            $table->unsignedBigInteger('id_quizz');
             $table->foreign('id_quizz')->references('id')->on('quizz');
             $table->timestamps();
         });

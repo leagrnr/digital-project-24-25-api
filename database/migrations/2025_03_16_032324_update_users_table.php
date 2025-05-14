@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('permission')->default('user');
-            $table->integer('id_compagnie');
+            $table->string('permission')->default('user');
+            $table->unsignedBigInteger('id_compagnie');
             $table->foreign('id_compagnie')->references('id')->on('compagnies');
         });
 

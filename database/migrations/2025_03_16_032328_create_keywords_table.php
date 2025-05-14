@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('keywords', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->id();
             $table->string('keyword', 128);
-            $table->integer('id_lesson');
+            $table->unsignedBigInteger('id_lesson');
             $table->foreign('id_lesson')->references('id')->on('lessons');
             $table->timestamps();
         });

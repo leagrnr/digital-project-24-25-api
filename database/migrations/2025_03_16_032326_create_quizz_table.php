@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('quizz', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->id();
             $table->text('title');
             $table->timestamps();
         });
