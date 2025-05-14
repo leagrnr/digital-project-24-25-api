@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Compagny;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserFactory extends Factory
 {
@@ -22,10 +23,10 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'username' => fake()->userName(),
+            'name' => fake()->name(),
             'email' => fake()->safeEmail(),
-            'password' => fake()->password(),
-            'role' => fake()->numberBetween(-10000, 10000),
+            'password' => Hash::make('password'),
+            'permission' => fake()->randomElement(['admin', 'user']),
             'id_compagnie' => Compagny::factory(),
         ];
     }

@@ -41,25 +41,25 @@ final class UserControllerTest extends TestCase
     #[Test]
     public function store_saves(): void
     {
-        $username = fake()->userName();
+        $name = fake()->name();
         $email = fake()->safeEmail();
         $password = fake()->password();
-        $role = fake()->numberBetween(-10000, 10000);
+        $permission = fake()->numberBetween(-10000, 10000);
         $id_compagnie = fake()->numberBetween(-10000, 10000);
 
         $response = $this->post(route('users.store'), [
-            'username' => $username,
+            'name' => $name,
             'email' => $email,
             'password' => $password,
-            'role' => $role,
+            'permission' => $permission,
             'id_compagnie' => $id_compagnie,
         ]);
 
         $users = User::query()
-            ->where('username', $username)
+            ->where('name', $name)
             ->where('email', $email)
             ->where('password', $password)
-            ->where('role', $role)
+            ->where('permission', $permission)
             ->where('id_compagnie', $id_compagnie)
             ->get();
         $this->assertCount(1, $users);
@@ -96,17 +96,17 @@ final class UserControllerTest extends TestCase
     public function update_behaves_as_expected(): void
     {
         $user = User::factory()->create();
-        $username = fake()->userName();
+        $name = fake()->name();
         $email = fake()->safeEmail();
         $password = fake()->password();
-        $role = fake()->numberBetween(-10000, 10000);
+        $permission = fake()->numberBetween(-10000, 10000);
         $id_compagnie = fake()->numberBetween(-10000, 10000);
 
         $response = $this->put(route('users.update', $user), [
-            'username' => $username,
+            'name' => $name,
             'email' => $email,
             'password' => $password,
-            'role' => $role,
+            'permission' => $permission,
             'id_compagnie' => $id_compagnie,
         ]);
 
@@ -115,10 +115,10 @@ final class UserControllerTest extends TestCase
         $response->assertOk();
         $response->assertJsonStructure([]);
 
-        $this->assertEquals($username, $user->username);
+        $this->assertEquals($name, $user->name);
         $this->assertEquals($email, $user->email);
         $this->assertEquals($password, $user->password);
-        $this->assertEquals($role, $user->role);
+        $this->assertEquals($permission, $user->permission);
         $this->assertEquals($id_compagnie, $user->id_compagnie);
     }
 
