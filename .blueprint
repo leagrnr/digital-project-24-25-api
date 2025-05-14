@@ -88,7 +88,7 @@ updated:
 models:
     Compagny: { id: 'integer primary', name: 'string:50', logo: 'string:512', siret: 'string:18', mail_manager: 'string:50', telephone_manager: 'string:16', adresse_siege: 'string:124' }
     Anecdocte: { id: 'integer primary', title: 'string:64', content: 'string:2048' }
-    User: { id: 'integer primary', name: 'string:64', email: 'string:255', password: 'string:255', role: integer, id_compagnie: 'integer foreign:compagnies.id' }
+    User: { id: 'integer primary', name: 'string:64', email: 'string:255', password: 'string:255', permission: integer, id_compagnie: 'integer foreign:compagnies.id' }
     Category: { id: 'integer primary', name: 'string:64' }
     Quizz: { id: 'integer primary', title: text }
     Lesson: { id: 'integer primary', name: 'string:64', content: text, id_categorie: 'integer nullable foreign:categories.id' }

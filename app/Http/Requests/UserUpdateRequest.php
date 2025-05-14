@@ -23,7 +23,7 @@ class UserUpdateRequest extends FormRequest
             'name' => ['required', 'string', 'max:64'],
             'email' => ['required', 'email', 'max:255'],
             'password' => ['required', 'password', 'max:255'],
-            'role' => ['required', 'integer'],
+            'permission' => ['required', 'integer'],
             'id_compagnie' => ['required', 'integer'],
         ];
     }

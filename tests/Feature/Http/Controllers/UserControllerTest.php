@@ -44,14 +44,14 @@ final class UserControllerTest extends TestCase
         $name = fake()->name();
         $email = fake()->safeEmail();
         $password = fake()->password();
-        $role = fake()->numberBetween(-10000, 10000);
+        $permission = fake()->numberBetween(-10000, 10000);
         $id_compagnie = fake()->numberBetween(-10000, 10000);
 
         $response = $this->post(route('users.store'), [
             'name' => $name,
             'email' => $email,
             'password' => $password,
-            'role' => $role,
+            'permission' => $permission,
             'id_compagnie' => $id_compagnie,
         ]);
 
@@ -59,7 +59,7 @@ final class UserControllerTest extends TestCase
             ->where('name', $name)
             ->where('email', $email)
             ->where('password', $password)
-            ->where('role', $role)
+            ->where('permission', $permission)
             ->where('id_compagnie', $id_compagnie)
             ->get();
         $this->assertCount(1, $users);
@@ -99,14 +99,14 @@ final class UserControllerTest extends TestCase
         $name = fake()->name();
         $email = fake()->safeEmail();
         $password = fake()->password();
-        $role = fake()->numberBetween(-10000, 10000);
+        $permission = fake()->numberBetween(-10000, 10000);
         $id_compagnie = fake()->numberBetween(-10000, 10000);
 
         $response = $this->put(route('users.update', $user), [
             'name' => $name,
             'email' => $email,
             'password' => $password,
-            'role' => $role,
+            'permission' => $permission,
             'id_compagnie' => $id_compagnie,
         ]);
 
@@ -118,7 +118,7 @@ final class UserControllerTest extends TestCase
         $this->assertEquals($name, $user->name);
         $this->assertEquals($email, $user->email);
         $this->assertEquals($password, $user->password);
-        $this->assertEquals($role, $user->role);
+        $this->assertEquals($permission, $user->permission);
         $this->assertEquals($id_compagnie, $user->id_compagnie);
     }
 
