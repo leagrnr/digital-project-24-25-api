@@ -23,7 +23,8 @@ class QuestionFactory extends Factory
     {
         return [
             'question' => fake()->word(),
-            'anwsers' => '{}',
+            'anwsers' => '["answer1", "answer2", "answer3", "answer4"]',
+            'good_answer' => fake()->randomElement(['answer1', 'answer2', 'answer3', 'answer4']),
             'id_quizz' => Quizz::factory(),
         ];
     }
