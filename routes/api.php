@@ -37,3 +37,5 @@ Route::apiResource('replies', App\Http\Controllers\ReplyController::class);
 Route::apiResource('questions', App\Http\Controllers\QuestionController::class);
 
 Route::apiResource('anecdoctes', App\Http\Controllers\AnecdocteController::class);
+
+Route::apiResource('lesson_readings', App\Http\Controllers\LessonReadingController::class);

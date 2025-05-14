@@ -14,11 +14,14 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('abouts', function (Blueprint $table) {
-            $table->integer('id_lesson')->primary();
+            $table->id();
+            $table->unsignedBigInteger('id_lesson');
             $table->foreign('id_lesson')->references('id')->on('lessons');
-            $table->integer('id_quizz')->primary();
+            $table->unsignedBigInteger('id_quizz');
             $table->foreign('id_quizz')->references('id')->on('quizz');
             $table->timestamps();
+
+            $table->unique(['id_lesson', 'id_quizz']);
         });
 
         Schema::enableForeignKeyConstraints();

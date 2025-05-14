@@ -25,4 +25,9 @@ class Lesson extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function lessonReadings()
+    {
+        return $this->hasMany(LessonReading::class, 'id_lesson');
+    }
 }
