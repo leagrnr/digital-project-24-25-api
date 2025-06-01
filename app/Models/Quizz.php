@@ -9,6 +9,8 @@ class Quizz extends Model
 {
     use HasFactory;
 
+    protected $table = 'quizz';
+
     /**
      * The attributes that are mass assignable.
      *

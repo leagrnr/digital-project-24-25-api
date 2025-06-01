@@ -24,10 +24,10 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'email' => fake()->safeEmail(),
+            'email' => fake()->unique()->safeEmail(),
             'password' => Hash::make('password'),
-            'permission' => fake()->randomElement(['admin', 'user']),
-            'id_compagnie' => Compagny::factory(),
+            'permission' => fake()->randomElement(['admin', 'user', 'manager']),
+            'id_compagnie' => null,
         ];
     }
 }

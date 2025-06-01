@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('logo', 512);
             $table->string('siret', 18);
             $table->string('mail_manager', 50);
-            $table->string('telephone_manager', 16);
+            $table->string('telephone_manager', 18);
             $table->string('adresse_siege', 124);
             $table->timestamps();
         });

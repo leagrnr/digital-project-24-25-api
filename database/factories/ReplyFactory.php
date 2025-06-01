@@ -23,8 +23,8 @@ class ReplyFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_user' => User::factory(),
-            'id_question' => Question::factory(),
+            'id_user' => null,
+            'id_question' => null,
             'score' => fake()->numberBetween(-10000, 10000),
         ];
     }

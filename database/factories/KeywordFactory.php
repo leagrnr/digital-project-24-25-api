@@ -23,7 +23,7 @@ class KeywordFactory extends Factory
     {
         return [
             'keyword' => fake()->regexify('[A-Za-z0-9]{128}'),
-            'id_lesson' => Lesson::factory(),
+            'id_lesson' => null,
         ];
     }
 }

@@ -3,29 +3,26 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-use App\Models\Question;
-use App\Models\Quizz;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Question>
+ */
 class QuestionFactory extends Factory
 {
     /**
-     * The name of the factory's corresponding model.
-     *
-     * @var string
-     */
-    protected $model = Question::class;
-
-    /**
      * Define the model's default state.
+     *
+     * @return array<string, mixed>
      */
     public function definition(): array
     {
+        $answers = ["answer1", "answer2", "answer3", "answer4"];
+
         return [
             'question' => fake()->word(),
-            'anwsers' => '["answer1", "answer2", "answer3", "answer4"]',
-            'good_answer' => fake()->randomElement(['answer1', 'answer2', 'answer3', 'answer4']),
-            'id_quizz' => Quizz::factory(),
+            'anwsers' => json_encode($answers),
+            'good_answer' => rand(0, 3),
+            'id_quizz' => null,
         ];
     }
 }

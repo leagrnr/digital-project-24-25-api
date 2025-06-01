@@ -21,12 +21,12 @@ class CompagnyFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'logo' => fake()->regexify('[A-Za-z0-9]{512}'),
-            'siret' => fake()->regexify('[A-Za-z0-9]{18}'),
-            'mail_manager' => fake()->regexify('[A-Za-z0-9]{50}'),
-            'telephone_manager' => fake()->regexify('[A-Za-z0-9]{16}'),
-            'adresse_siege' => fake()->regexify('[A-Za-z0-9]{124}'),
+            'name' => fake()->company(),
+            'logo' => 'https://placehold.co/600x400.png',
+            'siret' => fake()->numerify('###########'),
+            'mail_manager' => 'manager@testcompany.com',
+            'telephone_manager' => fake()->phoneNumber(),
+            'adresse_siege' => fake()->address(),
         ];
     }
 }
