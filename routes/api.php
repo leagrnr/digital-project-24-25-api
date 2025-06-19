@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\Auth\ApiAuthController;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\QuizzController;
 use App\Http\Controllers\UserController;
+use App\Http\Resources\QuizzCollection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,3 +41,9 @@ Route::apiResource('questions', App\Http\Controllers\QuestionController::class);
 Route::apiResource('anecdoctes', App\Http\Controllers\AnecdocteController::class);
 
 Route::apiResource('lesson_readings', App\Http\Controllers\LessonReadingController::class);
+
+Route::prefix('/search')->middleware(['auth:sanctum'])->group(function () {
+    Route::get('/lessons/byCategories/{categorie}', [LessonController::class, 'searchByCategory']);
+    Route::get('/lessons/byKeywords/{keyword}', [LessonController::class, 'searchByKeyword']);
+    Route::get('/quizz/byCategories/{categorie}', [QuizzController::class, 'searchByCategory']);
+});

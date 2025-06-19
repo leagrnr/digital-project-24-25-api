@@ -44,4 +44,22 @@ class LessonController extends Controller
 
         return response()->noContent();
     }
+
+    public function searchByCategory(Request $request): LessonCollection
+    {
+        $categoryId = $request->query('category_id');
+
+        $lessons = Lesson::where('category_id', $categoryId)->get();
+
+        return new LessonCollection($lessons);
+    }
+
+    public function searchByKeyword(Request $request): LessonCollection
+    {
+        $keyword = $request->query('keyword');
+
+        $lessons = Lesson::where('keywords', 'LIKE', "%$keyword%")->get();
+
+        return new LessonCollection($lessons);
+    }
 }
