@@ -24,7 +24,7 @@ class UserStoreRequest extends FormRequest
             'email' => ['required', 'email', 'max:255'],
             'password' => ['required', 'password', 'max:255'],
             'permission' => ['required', 'string'],
-            'id_compagnie' => ['required', 'integer'],
+            'id_compagnie' => ['nullable', 'integer'],
         ];
     }
 }

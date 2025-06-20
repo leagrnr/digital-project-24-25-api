@@ -15,7 +15,7 @@ return new class extends Migration
 
         Schema::table('users', function (Blueprint $table) {
             $table->string('permission')->default('user');
-            $table->unsignedBigInteger('id_compagnie');
+            $table->unsignedBigInteger('id_compagnie')->nullable();
             $table->foreign('id_compagnie')->references('id')->on('compagnies');
         });
 

@@ -16,13 +16,18 @@ class QuestionFactory extends Factory
      */
     public function definition(): array
     {
-        $answers = ["answer1", "answer2", "answer3", "answer4"];
+        $answers = [
+            fake()->sentence(),
+            fake()->sentence(),
+            fake()->sentence(),
+            fake()->sentence(),
+        ];
 
         return [
-            'question' => fake()->word(),
-            'anwsers' => json_encode($answers),
-            'good_answer' => rand(0, 3),
-            'id_quizz' => null,
+            'question' => fake()->sentence(10), // Génère une question réaliste
+            'anwsers' => json_encode($answers), // Réponses réalistes
+            'good_answer' => rand(0, 3), // Index de la bonne réponse
+            'id_quizz' => null, // Clé étrangère vers Quizz
         ];
     }
 }

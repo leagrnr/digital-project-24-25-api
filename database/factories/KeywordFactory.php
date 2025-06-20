@@ -22,8 +22,8 @@ class KeywordFactory extends Factory
     public function definition(): array
     {
         return [
-            'keyword' => fake()->regexify('[A-Za-z0-9]{128}'),
-            'id_lesson' => null,
+            'keyword' => fake()->word(), // Génère un mot réaliste
+            'id_lesson' => Lesson::factory(), // Relation avec Lesson
         ];
     }
 }

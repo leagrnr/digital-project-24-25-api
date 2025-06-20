@@ -19,8 +19,8 @@ class LessonReadingFactory extends Factory
     public function definition(): array
     {
         return [
-            "id_user" => null, // This will be set later, typically in a seeder or test
-            "id_lesson" => Lesson::factory(),
+            "id_user" => User::factory(), // Relation avec User
+            "id_lesson" => Lesson::factory(), // Relation avec Lesson
         ];
     }
 }

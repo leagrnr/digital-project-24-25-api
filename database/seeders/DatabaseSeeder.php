@@ -20,6 +20,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+
+        $adminUser = User::factory()->create([
+            'name' => 'Claire',
+            'email' => 'claire@medef.fr',
+            'permission' => "admin",
+        ]);
+
+        $mdsUser = User::factory()->create([
+            'name' => 'MDS',
+            'email' => 'mds@test.fr',
+            'permission' => "admin",
+        ]);
+
+
         $companies = Compagny::factory()->count(5)->create();
 
         $companies->each(function ($company) {
@@ -46,7 +60,7 @@ class DatabaseSeeder extends Seeder
                     ]);
                 });
 
-                // Créer 5 mots-clés pour chaque leçon
+                // Créer 5 mots-clés réalistes pour chaque leçon
                 Keyword::factory(5)->create([
                     'id_lesson' => $lesson->id
                 ]);

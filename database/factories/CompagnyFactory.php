@@ -22,9 +22,9 @@ class CompagnyFactory extends Factory
     {
         return [
             'name' => fake()->company(),
-            'logo' => 'https://placehold.co/600x400.png',
+            'logo' => fake()->imageUrl(600, 400, 'business', true, 'logo'), // Génère une URL réaliste pour le logo
             'siret' => fake()->numerify('###########'),
-            'mail_manager' => 'manager@testcompany.com',
+            'mail_manager' => fake()->companyEmail(), // Génère un email réaliste
             'telephone_manager' => fake()->phoneNumber(),
             'adresse_siege' => fake()->address(),
         ];
