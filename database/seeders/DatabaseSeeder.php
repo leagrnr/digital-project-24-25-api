@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Anecdocte;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Compagny;
@@ -89,5 +90,7 @@ class DatabaseSeeder extends Seeder
                 });
             });
         });
+
+        Anecdocte::factory(536)->create();
     }
 }
