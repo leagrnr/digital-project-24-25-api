@@ -42,10 +42,15 @@ class DatabaseSeeder extends Seeder
             ]);
         });
 
-        $categories = Category::factory(5)->create();
+        // Créer directement les catégories sans utiliser de factory
+        $categories = [
+            Category::create(['name' => 'Sécurité']),
+            Category::create(['name' => 'Écologie'])
+        ];
 
-        $categories->each(function ($category) {
-            $lessons = Lesson::factory(5)->create([
+        // Convertir le tableau en collection pour pouvoir utiliser la méthode each()
+        collect($categories)->each(function ($category) {
+            $lessons = Lesson::factory(12)->create([
                 'id_categorie' => $category->id
             ]);
 
