@@ -44,4 +44,16 @@ class AnecdocteController extends Controller
 
         return response()->noContent();
     }
+
+    public function random(Request $request)
+{
+    return response()->json(['message' => 'OK MEC'], 200);
+    $anecdote = Anecdocte::inRandomOrder()->first();
+
+    if (!$anecdote) {
+        return response()->json(['message' => 'Aucune anecdote trouvée'], 404);
+    }
+
+    return new AnecdocteResource($anecdote);
+}
 }

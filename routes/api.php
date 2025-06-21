@@ -40,7 +40,11 @@ Route::middleware(['auth:sanctum'])->group( function () {
 
     Route::apiResource('questions', App\Http\Controllers\QuestionController::class);
 
-    Route::apiResource('anecdoctes', App\Http\Controllers\AnecdocteController::class);
+    Route::get('/anecdoctes/random', [\App\Http\Controllers\AnecdocteController::class, 'random'])
+        ->name('anecdoctes.random');
+
+    // Route::apiResource('anecdoctes', controller: App\Http\Controllers\AnecdocteController::class);
+
 
     Route::apiResource('lesson_readings', App\Http\Controllers\LessonReadingController::class);
 
@@ -50,5 +54,6 @@ Route::middleware(['auth:sanctum'])->group( function () {
         Route::get('/quizz/byCategories/{categorie}', [QuizzController::class, 'searchByCategory']);
     });
     Route::get('quizz/{quizz}/questions', [QuestionController::class, 'searchByQuizz'])->name('questions.byQuizz');
+
 });
 
