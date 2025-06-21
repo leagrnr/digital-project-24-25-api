@@ -16,6 +16,7 @@ class ReplyResource extends JsonResource
             'id_user' => $this->id_user,
             'id_question' => $this->id_question,
             'score' => $this->score,
+            'solve_at' => $this->created_at,
         ];
     }
 }
