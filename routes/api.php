@@ -30,7 +30,7 @@ Route::apiResource('categories', App\Http\Controllers\CategoryController::class)
 
 Route::apiResource('quizz', App\Http\Controllers\QuizzController::class);
 
-Route::apiResource('lessons', App\Http\Controllers\LessonController::class);
+Route::apiResource('lessons', App\Http\Controllers\LessonController::class)->middleware(['auth:sanctum']);
 
 Route::apiResource('keywords', App\Http\Controllers\KeywordController::class);
 

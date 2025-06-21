@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Models\LessonReading;
+use Illuminate\Support\Facades\Auth;
 
 class LessonResource extends JsonResource
 {
