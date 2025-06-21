@@ -22,28 +22,30 @@ Route::middleware('auth:sanctum')->post('/logout', [ApiAuthController::class, 'l
 //     'posts' => 'PostController',
 // ]);
 
-Route::apiResource('users', App\Http\Controllers\UserController::class);
+Route::middleware(['auth:sanctum'])->group( function () {
+    Route::apiResource('users', App\Http\Controllers\UserController::class);
 
-Route::apiResource('compagnies', App\Http\Controllers\CompagnyController::class);
+    Route::apiResource('compagnies', App\Http\Controllers\CompagnyController::class);
 
-Route::apiResource('categories', App\Http\Controllers\CategoryController::class);
+    Route::apiResource('categories', App\Http\Controllers\CategoryController::class);
 
-Route::apiResource('quizz', App\Http\Controllers\QuizzController::class);
+    Route::apiResource('quizz', App\Http\Controllers\QuizzController::class);
 
-Route::apiResource('lessons', App\Http\Controllers\LessonController::class)->middleware(['auth:sanctum']);
+    Route::apiResource('lessons', App\Http\Controllers\LessonController::class);
 
-Route::apiResource('keywords', App\Http\Controllers\KeywordController::class);
+    Route::apiResource('keywords', App\Http\Controllers\KeywordController::class);
 
-Route::apiResource('replies', App\Http\Controllers\ReplyController::class);
+    Route::apiResource('replies', App\Http\Controllers\ReplyController::class);
 
-Route::apiResource('questions', App\Http\Controllers\QuestionController::class);
+    Route::apiResource('questions', App\Http\Controllers\QuestionController::class);
 
-Route::apiResource('anecdoctes', App\Http\Controllers\AnecdocteController::class);
+    Route::apiResource('anecdoctes', App\Http\Controllers\AnecdocteController::class);
 
-Route::apiResource('lesson_readings', App\Http\Controllers\LessonReadingController::class);
+    Route::apiResource('lesson_readings', App\Http\Controllers\LessonReadingController::class);
 
-Route::prefix('/search')->middleware(['auth:sanctum'])->group(function () {
-    Route::get('/lessons/byCategories/{categorie}', [LessonController::class, 'searchByCategory']);
-    Route::get('/lessons/byKeywords/{keyword}', [LessonController::class, 'searchByKeyword']);
-    Route::get('/quizz/byCategories/{categorie}', [QuizzController::class, 'searchByCategory']);
+    Route::prefix('/search')->group(function () {
+        Route::get('/lessons/byCategories/{categorie}', [LessonController::class, 'searchByCategory']);
+        Route::get('/lessons/byKeywords/{keyword}', [LessonController::class, 'searchByKeyword']);
+        Route::get('/quizz/byCategories/{categorie}', [QuizzController::class, 'searchByCategory']);
+    });
 });
