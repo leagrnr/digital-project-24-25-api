@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\ApiAuthController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\QuizzController;
 use App\Http\Controllers\UserController;
 use App\Http\Resources\QuizzCollection;
@@ -48,4 +49,6 @@ Route::middleware(['auth:sanctum'])->group( function () {
         Route::get('/lessons/byKeywords/{keyword}', [LessonController::class, 'searchByKeyword']);
         Route::get('/quizz/byCategories/{categorie}', [QuizzController::class, 'searchByCategory']);
     });
+    Route::get('quizz/{quizz}/questions', [QuestionController::class, 'searchByQuizz'])->name('questions.byQuizz');
 });
+

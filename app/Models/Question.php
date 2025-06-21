@@ -19,6 +19,7 @@ class Question extends Model
         'question',
         'anwsers',
         'id_quizz',
+        'good_answer'
     ];
 
     /**
@@ -30,6 +31,7 @@ class Question extends Model
         'id' => 'integer',
         'anwsers' => 'array',
         'id_quizz' => 'integer',
+        'good_answer' => 'integer',
     ];
 
     public function idQuizz(): BelongsTo
