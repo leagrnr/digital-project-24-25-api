@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Models\LessonReading;
 
 class LessonResource extends JsonResource
 {
@@ -19,6 +20,9 @@ class LessonResource extends JsonResource
             'id_categorie' => $this->id_categorie,
             'ceated_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'is_read' => $request->user() ? LessonReading::where('id_lesson', $this->id)
+                                            ->where('id_user', $request->user()->id)
+                                            ->exists() : false,
         ];
     }
 }
