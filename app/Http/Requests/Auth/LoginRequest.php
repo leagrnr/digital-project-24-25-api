@@ -49,6 +49,17 @@ class LoginRequest extends FormRequest
             ]);
         }
 
+        // Vérifie que l'utilisateur est "admin" ou "manager"
+        $user = Auth::user();
+        if (!in_array($user->permission, ['admin', 'manager'])) {
+            Auth::logout();
+            RateLimiter::hit($this->throttleKey());
+
+            throw ValidationException::withMessages([
+                'email' => 'auth.failed',
+            ]);
+        }
+
         RateLimiter::clear($this->throttleKey());
     }
 
