@@ -17,4 +17,9 @@ class Category extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function quizzs()
+    {
+        return $this->hasMany(Quizz::class, 'category_id');
+    }
 }

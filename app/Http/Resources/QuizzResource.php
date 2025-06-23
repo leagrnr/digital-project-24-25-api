@@ -15,6 +15,7 @@ class QuizzResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'category' => new CategoryResource($this->whenLoaded('category')),
         ];
     }
 }

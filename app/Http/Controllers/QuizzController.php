@@ -14,7 +14,7 @@ class QuizzController extends Controller
 {
     public function index(Request $request): QuizzCollection
     {
-        $quizz = Quizz::all();
+        $quizz = Quizz::with('category')->get();
 
         return new QuizzCollection($quizz);
     }
@@ -23,19 +23,19 @@ class QuizzController extends Controller
     {
         $quizz = Quizz::create($request->validated());
 
-        return new QuizzResource($quizz);
+        return new QuizzResource($quizz->load('category'));
     }
 
     public function show(Request $request, Quizz $quizz): QuizzResource
     {
-        return new QuizzResource($quizz);
+        return new QuizzResource($quizz->load('category'));
     }
 
     public function update(QuizzUpdateRequest $request, Quizz $quizz): QuizzResource
     {
         $quizz->update($request->validated());
 
-        return new QuizzResource($quizz);
+        return new QuizzResource($quizz->load('category'));
     }
 
     public function destroy(Request $request, Quizz $quizz): Response

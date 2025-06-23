@@ -21,6 +21,7 @@ class QuizzStoreRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string'],
+            'category_id' => ['nullable', 'integer', 'exists:category,id'],
         ];
     }
 }
