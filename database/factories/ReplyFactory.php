@@ -23,9 +23,9 @@ class ReplyFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_user' => User::factory(),
-            'id_question' => Question::factory(),
-            'score' => fake()->numberBetween(-10000, 10000),
+            'id_user' => User::factory(), // Relation avec User
+            'id_question' => Question::factory(), // Relation avec Question
+            'score' => fake()->numberBetween(0, 100), // Score réaliste
         ];
     }
 }

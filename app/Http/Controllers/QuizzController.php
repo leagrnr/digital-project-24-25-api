@@ -44,4 +44,13 @@ class QuizzController extends Controller
 
         return response()->noContent();
     }
+
+    public function searchByCategory(Request $request): QuizzCollection
+    {
+        $categoryId = $request->query('category_id');
+
+        $quizz = Quizz::where('category_id', $categoryId)->get();
+
+        return new QuizzCollection($quizz);
+    }
 }

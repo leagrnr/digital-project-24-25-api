@@ -22,8 +22,8 @@ class LessonFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'content' => fake()->paragraphs(3, true),
+            'name' => fake()->sentence(3), // Génère un nom réaliste
+            'content' => '<h1>' . fake()->sentence(4, true) . '</h1><p>' . fake()->paragraph() . '</p><ul><li>' . fake()->sentence() . '</li><li>' . fake()->sentence() . '</li></ul> <h2>' . fake()->sentence(4, true) . '</h2> <p>' . fake()->paragraph(10, true) . '</p>', // Génère du contenu HTML réaliste
             'id_categorie' => Category::factory(),
         ];
     }

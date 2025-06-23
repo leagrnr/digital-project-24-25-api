@@ -21,8 +21,8 @@ class AnecdocteFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->sentence(4),
-            'content' => fake()->paragraphs(3, true),
+            'title' => fake()->catchPhrase(), // Génère un titre réaliste
+            'content' => fake()->text(500), // Génère un contenu réaliste
         ];
     }
 }

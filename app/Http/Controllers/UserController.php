@@ -6,9 +6,13 @@ use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\UserResource;
+use App\Models\Compagny;
+use App\Models\Reply;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -43,5 +47,21 @@ class UserController extends Controller
         $user->delete();
 
         return response()->noContent();
+    }
+
+    public function loggedUser(): JsonResponse
+    {
+        $user = Auth::user();
+
+        $reply = Reply::where('id_user', $user->id);
+
+        $jsonResponse = [
+            'user' => new UserResource($user),
+            'company' => Compagny::where('id', $user->id_compagnie)->first(),
+            'score' => $reply->sum('score'),
+            'replies' => $reply->count(),
+        ];
+
+        return response()->json($jsonResponse, 200);
     }
 }

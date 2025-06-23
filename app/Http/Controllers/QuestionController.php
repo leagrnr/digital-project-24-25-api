@@ -7,6 +7,7 @@ use App\Http\Requests\QuestionUpdateRequest;
 use App\Http\Resources\QuestionCollection;
 use App\Http\Resources\QuestionResource;
 use App\Models\Question;
+use App\Models\Quizz;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -43,5 +44,12 @@ class QuestionController extends Controller
         $question->delete();
 
         return response()->noContent();
+    }
+
+    public function searchByQuizz(Request $request, Quizz $quizz): QuestionCollection
+    {
+        $questions = Question::where('id_quizz', $quizz->id)->get();
+
+        return new QuestionCollection($questions);
     }
 }
